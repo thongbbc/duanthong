@@ -5,37 +5,47 @@
  */
 
 import React, { Component } from 'react';
+
+import LoginScreen from './screen/login'
+
+import Drawer from './screen/main/drawer'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import reducer from './reducer/reducerMain'
+
+import {width,height} from './supportScreen'
 import {
-  Platform,
+  StackNavigator,
+} from 'react-navigation';
+
+import {
+  Platform,TextInput,TouchableOpacity,
   StyleSheet,
   Text,Image,
   View
 } from 'react-native';
-
-
-export default class App extends Component<{}> {
+class Main extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          style={styles.stretch}
-          source={require('./img/background.jpg')}
-        >
-        
-        </Image>
-      </View>
-    );
+        <Drawer/>
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const App = StackNavigator({
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: ({navigation}) => ({
+      header: null,
+      gesturesEnabled: false,
+    })
   },
-  stretch : {
-    flex:1
-  }
+  Main: {screen: Main,
+    navigationOptions: ({navigation}) => ({
+      header: null,
+      gesturesEnabled: false,
+    }),
+  },
 });
+export default App;
+
