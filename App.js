@@ -27,7 +27,9 @@ import {
 class Main extends Component {
   render() {
     return (
+      <Provider store={createStore(reducer)}>
         <Drawer/>
+      </Provider>
     )
   }
 }

@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import controlDrawer from './controlDrawer'
+import currentPosition from './controlDrawer'
 export default combineReducers({
-    controlDrawer:controlDrawer
+    currentPosition:currentPosition
 })

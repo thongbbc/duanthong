@@ -1,13 +1,12 @@
-load =  (check) => {
-    if (check)
-        return {
-            type:'Load'
-        }
-    else {
-       return {
-            type:'UnLoad'
-        } 
+getCurrentLocation =  () => {
+    return {
+        type:'getCurrentLocation'
     }
 }
-
-export {load}
+setCurrentLocation =  (latitude,longitude) => {
+    return {
+        type:'setCurrentLocation',
+        latitude,longitude
+    }
+}
+export {getCurrentLocation,setCurrentLocation}
