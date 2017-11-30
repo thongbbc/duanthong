@@ -21,6 +21,13 @@ import Swiper from 'react-native-swiper';
 
 
 class MainScreen extends Component<{}> {
+    static navigationOptions =  {
+        drawerLabel: 'Home',
+        drawerIcon: ({ tintColor }) => (
+        <Icon
+            style = {{left:5}} name="home" size={25} color={'white'} />
+        ),
+    }
     constructor(props){
         super(props)
         this.spinValue = new Animated.Value(0)
@@ -177,7 +184,7 @@ class MainScreen extends Component<{}> {
                                         <CardView
                                         image = {'hinh3.jpg'}
                                         widthCardView = {width-20}
-                                        title = {item.key+'dasdas'} heightCardView = {250}/>
+                                        title = {item.key+'dasdas'} heightCardView = {height/3}/>
                                         </View>
                                     )
                                 } else 
@@ -187,11 +194,11 @@ class MainScreen extends Component<{}> {
                                         <CardView
                                         image = {'hinh1.jpg'}
                                         widthCardView = {width/2-15}
-                                        title = {item.key} heightCardView = {250}/>
+                                        title = {item.key} heightCardView = {height/3}/>
                                         <CardView
                                         image = {'hinh2.jpg'}
                                         widthCardView = {width/2-15}
-                                        title = {item.key+'dasdsa'} heightCardView = {250}/>
+                                        title = {item.key+'dasdsa'} heightCardView = {height/3}/>
                                     </View>
                                 )
                             }}

@@ -7,6 +7,7 @@ import {
 } from 'react-navigation';
 import MainScreen from '../'
 import Shop from '../../shop'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {connect} from 'react-redux'
 import * as action from '../../../actions/main'
@@ -35,12 +36,16 @@ class CustomDrawerContentComponent extends Component{
                                 source={require('../../../img/background.jpg')}/>
                             <Text style = {{color:'white',backgroundColor:'transparent',top:10,fontWeight:'bold'}}>Nguyen Anh Thong</Text>
                         </View>
-                        <View style = {{backgroundColor:'white',height:height*2/3}}>
+                        <View style = {{backgroundColor:'#2C2E3B',height:height*2/3}}>
                             <DrawerItems {...this.props} />
                             <TouchableOpacity onPress = {()=>{
                                 this.props.navigationParent.navigation.goBack(null)    
                             }}>
-                                <Text style = {{fontSize:16,fontWeight:'bold',left:17,top:10}}>Logout</Text>
+                            <View style = {{flexDirection:'row',alignItems:'center',top:10}}>
+                                <Icon
+                                    style = {{marginLeft:27}} name="sign-out" size={25} color={'rgba(255,255,255,0.5)'} />
+                                <Text style = {{fontSize:15,fontWeight:'bold',left:25,color:'white'}}>Logout</Text>
+                            </View>
                             </TouchableOpacity>
                         </View>
 

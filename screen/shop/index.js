@@ -10,7 +10,7 @@ import {
 } from 'react-navigation';
 import CardView from '../../components/cardView'
 import Categories from './categories'
-
+import Man from './man'
 import {
   Platform,TextInput,TouchableOpacity,
   StyleSheet,FlatList,ScrollView,
@@ -18,14 +18,6 @@ import {
   View
 } from 'react-native';
 import Swiper from 'react-native-swiper';
-
-class Man extends Component {
-    render(){
-        return(
-            <View style = {{flex:1,backgroundColor:'red'}}></View>
-        )
-    }
-}
 class Woman extends Component {
     render(){
         return(
@@ -69,6 +61,13 @@ const Pager = TabNavigator({
 
 
 export default class Shop extends Component<{}> {
+    static navigationOptions =  {
+        drawerLabel: 'Shop',
+        drawerIcon: ({ tintColor }) => (
+        <Icon
+            style = {{left:5}} name="shopping-bag" size={25} color={'#FFF'} />
+        ),
+    }
     constructor(props){
         super(props)
         this.spinValue = new Animated.Value(0)

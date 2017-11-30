@@ -5,6 +5,8 @@ import {
 import {
   DrawerNavigator,
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import MainScreen from '../'
 import Shop from '../../shop'
 
@@ -47,10 +49,11 @@ const Drawer = DrawerNavigator({
     drawerBackgroundColor:'white',
     contentComponent:CustomDrawerContentComponent,
     contentOptions: {
-        activeBackgroundColor: 'rgba(0,0,0,0.05)',
-        activeTintColor: 'green',
+        activeBackgroundColor: 'rgba(255,255,255,0.7)',
+        activeTintColor: 'white',
+        inactiveTintColor:'#FFF',
         labelStyle: {
-            fontSize: 16,
+            fontSize: 15,
         }
     },
 });
@@ -61,7 +64,7 @@ class Main extends Component {
   }
   render() {
     return (
-        <Drawer navigationParent = {this.props.navigationParent}/>
+        <Drawer/>
     )
   }
 }
