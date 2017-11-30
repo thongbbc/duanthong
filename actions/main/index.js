@@ -1,12 +1,12 @@
-getCurrentLocation =  () => {
+getNavigation =  () => {
     return {
-        type:'getCurrentLocation'
+        type:'getNavigation'
     }
 }
-setCurrentLocation =  (latitude,longitude) => {
+setNavigation =  (navigation) => {
     return {
-        type:'setCurrentLocation',
-        latitude,longitude
+        type:'setNavigation',
+        navigation
     }
 }
-export {getCurrentLocation,setCurrentLocation}
+export {getNavigation,setNavigation}

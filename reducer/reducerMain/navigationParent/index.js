@@ -1,22 +1,20 @@
 import React from 'react';
 import {Animated,Easing} from 'react-native';
 const defaultvalue = {
-    latitude:0,
-    longitude:0
+    navigation:null
 }
 export default (state = defaultvalue,actions) => {
     switch(actions.type) {
-        case 'getCurrentLocation': {
+        case 'getNavigation': {
             return {
                 ...state
             }
         };
-        case 'setCurrentLocation': {
+        case 'setNavigation': {
             return {
-                latitude:actions.latitude,
-                longitude:actions.longitude
+                navigation:actions.navigation
             }
-        };
+        }
         default:return state;
     }
 }

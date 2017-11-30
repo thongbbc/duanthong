@@ -1,36 +1,20 @@
 import React, { Component } from 'react';
 import {
-    View,Text,ScrollView,Image
+    View,Text,ScrollView,Image,TouchableOpacity
 } from 'react-native';
 import {
   DrawerNavigator,
 } from 'react-navigation';
 import MainScreen from '../'
+import Shop from '../../shop'
+
+import {connect} from 'react-redux'
+import * as action from '../../../actions/main'
 import { DrawerItems, SafeAreaView } from 'react-navigation';
 import {width,height} from '../../../supportScreen'
 import LinearGradient from 'react-native-linear-gradient';
+import CustomDrawerContentComponent from './custom'
 
-const CustomDrawerContentComponent = (props) => (
-    <LinearGradient 
-        colors={['#76b852','#8DC26F','#8DC26F','#8DC26F','#fff','#fff','#fff']}
-        style={{height,flex:1}}>
-        <ScrollView style = {{flex:1}}>
-            <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}> 
-                <View 
-                style={{height:height/3,flex:1,justifyContent:'center',alignItems:'center',}}>
-                    <Image
-                        style={{backgroundColor:'white',borderRadius:width/3/2,width:width/3,height:width/3}}
-                        resizeMode='cover'
-                        source={require('../../../img/background.jpg')}/>
-                    <Text style = {{color:'white',backgroundColor:'transparent',top:10}}>Nguyen Anh Thong</Text>
-                </View>
-                <View style = {{backgroundColor:'white',height:height*2/3}}>
-                    <DrawerItems {...props} />
-                </View>
-            </SafeAreaView> 
-        </ScrollView>
-  </LinearGradient>
-);
 
 const styles = {
   container: {
@@ -39,16 +23,6 @@ const styles = {
 };
 
 
-
-class Screen1 extends Component {
-    render() {
-        return(
-            <View style = {{flex:1,backgroundColor:'red'}}>
-
-            </View>
-        )
-    }
-}
 class Screen2 extends Component {
     render() {
         return(
@@ -60,11 +34,11 @@ class Screen2 extends Component {
 }
 
 const Drawer = DrawerNavigator({
-    Main: {
+    Home: {
         screen: MainScreen,
     },
-    Screen1: {
-        screen: Screen1,
+    Shop: {
+        screen: Shop,
     },
     Screen2: {
         screen: Screen2,
@@ -74,11 +48,27 @@ const Drawer = DrawerNavigator({
     contentComponent:CustomDrawerContentComponent,
     contentOptions: {
         activeBackgroundColor: 'rgba(0,0,0,0.05)',
-        activeTintColor: 'gray',
+        activeTintColor: 'green',
         labelStyle: {
             fontSize: 16,
         }
     },
 });
-
-export default Drawer;
+class Main extends Component {
+  constructor(props) {
+    super(props)
+    this.props.setNavigation(this.props.navigation)
+  }
+  render() {
+    return (
+        <Drawer navigationParent = {this.props.navigationParent}/>
+    )
+  }
+}
+const mapStateToProps = (state) => {
+    return({
+        navigationParent:state.navigation
+    })
+}
+connect(mapStateToProps,action)(Drawer)
+export default connect(mapStateToProps,action)(Main);

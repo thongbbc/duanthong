@@ -7,8 +7,8 @@
 import React, { Component } from 'react';
 
 import LoginScreen from './screen/login'
+import Main from './screen/main/drawer'
 
-import Drawer from './screen/main/drawer'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducer/reducerMain'
@@ -24,17 +24,8 @@ import {
   Text,Image,
   View
 } from 'react-native';
-class Main extends Component {
-  render() {
-    return (
-      <Provider store={createStore(reducer)}>
-        <Drawer/>
-      </Provider>
-    )
-  }
-}
 
-const App = StackNavigator({
+const Navigator = StackNavigator({
   Login: {
     screen: LoginScreen,
     navigationOptions: ({navigation}) => ({
@@ -49,5 +40,18 @@ const App = StackNavigator({
     }),
   },
 });
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return(
+      <Provider store={createStore(reducer)}>
+        <Navigator/>
+      </Provider>
+    )
+  }
+}
+
 export default App;
 

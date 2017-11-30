@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import currentPosition from './controlDrawer'
+import navigation from './navigationParent'
 export default combineReducers({
-    currentPosition:currentPosition
+    navigation:navigation
 })
